@@ -32,7 +32,7 @@ class ObjectStoreController extends Controller
 
         return response()->json([
             'success'               => true,
-            'message' => 'Resource created successfully',
+            'message'                =>            'Resource created successfully',
             'data' => [],
         ], 201);
     }
