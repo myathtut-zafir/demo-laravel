@@ -25,14 +25,14 @@ class ObjectStoreController extends Controller
     public function store(Request $request): JsonResponse
     {
         ObjectStore::create([
-            'key'                           => $request->input('key'),
-            'value'=> $request->input('value'),
+            'key' => $request->input('key'),
+            'value' => $request->input('value'),
             'created_at_timestamp' => now()->timestamp,
         ]);
 
         return response()->json([
-            'success'               => true,
-            'message'                =>            'Resource created successfully',
+            'success' => true,
+            'message' => 'Resource created successfully',
             'data' => [],
         ], 201);
     }
@@ -43,7 +43,7 @@ class ObjectStoreController extends Controller
     public function show(string $id): JsonResponse
     {
         return response()->json([
-            'success'                   => true,
+            'success' => true,
             'data' => [],
         ]);
     }
