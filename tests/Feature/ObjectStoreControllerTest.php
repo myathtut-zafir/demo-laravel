@@ -16,7 +16,7 @@ class ObjectStoreControllerTest extends TestCase
     public function test_store_creates_object_store_successfully(): void
     {
         $payload = [
-            'key' => 'test-key123213',
+            'key' => 'test-key',
             'value' => ['foo' => 'barrr', 'nested' => ['data' => 'value']],
         ];
 
