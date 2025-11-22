@@ -16,7 +16,7 @@ class ObjectStoreControllerTest extends TestCase
     public function test_store_creates_object_store_successfully(): void
     {
         $payload = [
-            'key' => 'test-key',
+            'key' => 'test-key123213',
             'value' => ['foo' => 'barrr', 'nested' => ['data' => 'value']],
         ];
 
@@ -25,7 +25,7 @@ class ObjectStoreControllerTest extends TestCase
         $response->assertStatus(201)
             ->assertJson([
                 'success' => true,
-                'message' => 'Resource created successfully',
+                'message' => 'Resource created successfullyyyyyyyyyy',
                 'data' => [],
             ]);
 
