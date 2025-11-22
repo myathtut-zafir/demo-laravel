@@ -1,0 +1,63 @@
+name: PHPUnit Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    
+    name: Run PHPUnit Tests
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
+          coverage: xdebug
+      
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+      
+      - name: Copy .env file
+        run: cp .env.example .env
+      
+      - name: Generate application key
+        run: php artisan key:generate
+      
+      - name: Create SQLite database
+        run: touch database/database.sqlite
+      
+      - name: Run migrations
+        run: php artisan migrate --force
+      
+      - name: Run PHPUnit tests
+        run: php artisan test --coverage --min=80
+      
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        if: always()
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
