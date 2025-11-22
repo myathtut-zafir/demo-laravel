@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ObjectStore;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ObjectStoreController extends Controller
 {
@@ -15,7 +15,7 @@ class ObjectStoreController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => []
+            'data' => [],
         ]);
     }
 
@@ -29,10 +29,11 @@ class ObjectStoreController extends Controller
             'value' => $request->input('value'),
             'created_at_timestamp' => now()->timestamp,
         ]);
+
         return response()->json([
             'success' => true,
             'message' => 'Resource created successfully',
-            'data' => []
+            'data' => [],
         ], 201);
     }
 
@@ -43,7 +44,7 @@ class ObjectStoreController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => []
+            'data' => [],
         ]);
     }
 
@@ -55,7 +56,7 @@ class ObjectStoreController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Resource updated successfully',
-            'data' => []
+            'data' => [],
         ]);
     }
 
@@ -66,7 +67,7 @@ class ObjectStoreController extends Controller
     {
         return response()->json([
             'success' => true,
-            'message' => 'Resource deleted successfully'
+            'message' => 'Resource deleted successfully',
         ]);
     }
 }

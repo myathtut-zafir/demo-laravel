@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('object_stores', function (Blueprint $table) {
             $table->id();
-            $table->string("key",255)->comment("key of the object");
-            $table->jsonb("value")->comment("value of the object");
-            $table->unsignedBigInteger("created_at_timestamp")->comment('UNIX timestamp (UTC)');;
+            $table->string('key', 255)->comment('key of the object');
+            $table->jsonb('value')->comment('value of the object');
+            $table->unsignedBigInteger('created_at_timestamp')->comment('UNIX timestamp (UTC)');
 
             $table->timestamps();
             $table->index(['key', 'created_at_timestamp'], 'idx_key_created_at_timestamp');
