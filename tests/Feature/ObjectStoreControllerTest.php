@@ -17,7 +17,7 @@ class ObjectStoreControllerTest extends TestCase
     {
         $payload = [
             'key' => 'test-key',
-            'value' => ['foo' => 'bar', 'nested' => ['data' => 'value']],
+            'value' => ['foo' => 'barrr', 'nested' => ['data' => 'value']],
         ];
 
         $response = $this->postJson('/api/object-store', $payload);
@@ -31,7 +31,7 @@ class ObjectStoreControllerTest extends TestCase
 
         $this->assertDatabaseHas('object_stores', [
             'key' => 'test-key',
-            'value' => json_encode(['foo' => 'bar', 'nested' => ['data' => 'value']]),
+            'value' => json_encode(['foo' => 'barrr', 'nested' => ['data' => 'value']]),
         ]);
     }
 
