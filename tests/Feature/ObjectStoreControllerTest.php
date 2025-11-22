@@ -46,15 +46,15 @@ class ObjectStoreControllerTest extends TestCase
         ];
 
         $beforeTimestamp = now()->timestamp;
-        
+
         $response = $this->postJson('/api/object-store', $payload);
-        
+
         $afterTimestamp = now()->timestamp;
 
         $response->assertStatus(201);
 
         $objectStore = ObjectStore::where('key', 'timestamp-test')->first();
-        
+
         $this->assertNotNull($objectStore);
         $this->assertGreaterThanOrEqual($beforeTimestamp, $objectStore->created_at_timestamp);
         $this->assertLessThanOrEqual($afterTimestamp, $objectStore->created_at_timestamp);

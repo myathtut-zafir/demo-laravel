@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ObjectStoreController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      */
@@ -26,6 +25,4 @@ class ObjectStoreController extends Controller
             'data' => [],
         ], 201);
     }
-
-
 }
